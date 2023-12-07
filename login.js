@@ -1,3 +1,5 @@
+import { auth, signInWithEmailAndPassword } from "./firebase.js";
+
 const login = () => {
     const email = document.getElementById("email");
     const password = document.getElementById("password");
