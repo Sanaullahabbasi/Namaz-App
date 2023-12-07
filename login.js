@@ -9,6 +9,7 @@ const login = () => {
         // Signed in
         const user = userCredential.user;
         console.log("user==>", user);
+        window.location.href = "profile.html"
       })
       .catch((error) => {
         const errorCode = error.code;
