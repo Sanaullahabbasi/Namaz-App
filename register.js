@@ -9,6 +9,7 @@ const register = () => {
         // Signed up
         const user = userCredential.user;
         console.log("user==>", user);
+        location.href = "profile.html"
       })
       .catch((error) => {
         const errorCode = error.code;

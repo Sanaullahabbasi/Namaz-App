@@ -9,3 +9,14 @@ body{
 color: blue;
 text-align: center;
 }
+#loader{
+width: 100px;
+height: 100px;
+}
+.spinner-grow {
+    --bs-spinner-width: 6rem !important;
+    --bs-spinner-height: 6rem !important;
+}
+#main{
+    display: none;
+}

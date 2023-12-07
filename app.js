@@ -16,19 +16,24 @@ if (logutBtn) {
   logutBtn.addEventListener("click", logout);
 }
 
+let name = document.querySelector(".name");
+let email = document.querySelector(".email");
+let loader = document.getElementById("loader");
+let main = document.getElementById("main");
+
 onAuthStateChanged(auth, (user) => {
-    let name = document.querySelector(".name");
-    let email = document.querySelector(".email");
   if (user) {
     console.log("user login", user);
+    loader.style.display = "none";
+    main.style.display = "flex"
     name.innerHTML = `<h2 class=" mt-5">${user.email.slice(0,user.email.indexOf("@"))}</h2>`;
-    email.innerHTML = `<h2 class="mt-5">${user.email}</h2>`
+    email.innerHTML = `<h2 class="mt-5">${user.email}</h2>`;
     if (location.pathname !== "/profile.html") {
       window.location.href = "profile.html";
     }
   } else {
     console.log("user logout");
-    if (location.pathname !== "/index.html") {
+    if (location.pathname !== "/index.html" && location.pathname !== "/Register.html") {
       location.href = "index.html";
     }
   }
