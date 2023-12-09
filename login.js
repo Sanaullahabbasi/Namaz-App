@@ -37,6 +37,8 @@ const login = () => {
               .then((url) => {
               window.location.href = url;
             });
+            
+         
                         
             } else if (result.isDenied) {
               Swal.fire("Not registered", "", "Register to explore more");
