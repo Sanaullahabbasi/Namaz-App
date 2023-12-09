@@ -15,6 +15,11 @@ const register = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("errorMessage==>", errorMessage);
+        if(errorMessage === "Firebase: Password should be at least 6 characters (auth/weak-password)."){
+          document.getElementById("checkPass").innerHTML = `* Weak Password [should be at least 6 characters]`
+        }else if (errorMessage === "Firebase: Error (auth/email-already-in-use)."){
+        alert(reg_email.value  + " is already registerd login now")
+        }
       });
   };
   document.getElementById("regBtn").addEventListener("click", register);
