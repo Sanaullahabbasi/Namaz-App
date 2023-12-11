@@ -26,3 +26,11 @@ height: 100px;
     margin-top: 2px;
     padding-left: 12px;
 }
+.myBtn{
+    background: transparent !important;
+    color: blue !important;
+}
+.myBtn:hover, .myBtn:focus {
+    background: blue !important;
+    color: rgb(246, 246, 246) !important;
+}
