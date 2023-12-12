@@ -29,5 +29,5 @@ export {
     createUserWithEmailAndPassword,
     signOut, 
     onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber, getAuth,
-    GoogleAuthProvider, signInWithPopup, signInWithRedirect 
+    GoogleAuthProvider, signInWithPopup, signInWithRedirect, provider 
 }
