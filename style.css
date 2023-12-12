@@ -34,3 +34,9 @@ height: 100px;
     background: blue !important;
     color: rgb(246, 246, 246) !important;
 }
+#opt-sec{
+    display: none;
+}
+#otp{
+    margin-bottom: 20px;
+}

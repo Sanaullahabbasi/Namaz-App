@@ -3,8 +3,10 @@ import { auth, RecaptchaVerifier, signInWithPhoneNumber } from "./firebase.js";
 let confirmation;
 let submitOTP = document.getElementById("submitOTP");
 let registerWithPhone = document.getElementById("registerWithPhone");
+let optSec = document.getElementById("opt-sec");
 
 const registerd = ()=>{
+    optSec.style.display = "block";
     const phoneNumber = document.getElementById("phone");
     window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {});
     const appVerifier = window.recaptchaVerifier;
@@ -27,7 +29,7 @@ const phoneVerify = ()=>{
     confirmation.confirm(otp.value).then((result) => {
         const user = result.user;
         console.log("user registered -->", user)
- 
+        location.href = "profile.html"
       }).catch((error) => {
        console.log("user not registered-->", error);
       });
