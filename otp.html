@@ -28,7 +28,7 @@
                 >Phone Number</label
               >
               <input
-                type="email"
+                type="number"
                 class="form-control"
                 aria-describedby="emailHelp"
                 id="phone"
@@ -42,12 +42,17 @@
               <input type="text" class="form-control" id="otp" placeholder="OTP code" />
             </div>
             <button id="submitOTP" type="submit" class="btn btn-primary">
-              submit
+              Get OPT
             </button>
+            <div id="recaptcha-container"></div>
             <br/>
             <p>Wanna Register through registration form <a href="Register.html">Register Now</a></p>
           </div>
         </div>
       </div>
+
+      <!-- <script src="app.js" type="module"></script> -->
+      <script src="firebase.js" type="module"></script>
+      <script src="otp.js" type="module"></script>
 </body>
 </html>

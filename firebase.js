@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword, 
   signOut, 
-  onAuthStateChanged, 
+  onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber,
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
@@ -26,5 +26,5 @@ export {
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword,
     signOut, 
-    onAuthStateChanged, 
+    onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber, getAuth,
 }

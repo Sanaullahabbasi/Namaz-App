@@ -33,7 +33,7 @@ onAuthStateChanged(auth, (user) => {
     }
   } else {
     console.log("user logout");
-    if (location.pathname !== "/index.html" && location.pathname !== "/Register.html") {
+    if (location.pathname === "/profile.html") {
       location.href = "index.html";
     }
   }
