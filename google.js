@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithRedirect, provider  } from "./firebase";
+import { getAuth, auth, signInWithPopup, GoogleAuthProvider, signInWithRedirect, provider  } from "./firebase.js";
 
 let regWGoogle = document.getElementById("regWGoogle");
 
@@ -11,6 +11,7 @@ const registerwithGoogle = ()=>{
     const token = credential.accessToken;
     const user = result.user;
     console.log("google access", credential, token, user);
+    location.href = "profile.html";
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
