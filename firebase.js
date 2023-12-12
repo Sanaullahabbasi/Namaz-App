@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword, 
   signOut, 
   onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber,
+  GoogleAuthProvider, signInWithPopup, signInWithRedirect, 
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
@@ -20,6 +21,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider()
 
 export { 
     auth, 
@@ -27,4 +29,5 @@ export {
     createUserWithEmailAndPassword,
     signOut, 
     onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber, getAuth,
+    GoogleAuthProvider, signInWithPopup, signInWithRedirect 
 }
