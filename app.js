@@ -1,4 +1,4 @@
-import { auth, signOut, onAuthStateChanged } from "./firebase.js";
+import { auth, signOut, onAuthStateChanged, getDoc, db, doc, } from "./firebase.js";
 
 const logout = () => {
   signOut(auth)
@@ -21,15 +21,21 @@ let email = document.querySelector(".email");
 let loader = document.getElementById("loader");
 let main = document.getElementById("main");
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
-    console.log("user login", user);
-    loader.style.display = "none";
-    main.style.display = "flex"
-    name.innerHTML = `<h2 class=" mt-5">${user.email.slice(0,user.email.indexOf("@"))}</h2>`;
-    email.innerHTML = `<h2 class="mt-5">${user.email}</h2>`;
-    if (location.pathname !== "/profile.html") {
-      window.location.href = "profile.html";
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    console.log("doc", docSnap.data())
+    if(docSnap.data()){
+      console.log("user login", user);
+      loader.style.display = "none";
+      main.style.display = "flex"
+      name.innerHTML = `<h2 class=" mt-5">${user.email.slice(0,user.email.indexOf("@"))}</h2>`;
+      email.innerHTML = `<h2 class="mt-5">${user.email}</h2>`;
+      if (location.pathname !== "/profile.html") {
+        window.location.href = "profile.html";
+      }
+      console.log("mil gaya");
     }
   } else {
     console.log("user logout");
