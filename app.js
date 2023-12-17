@@ -1,4 +1,6 @@
-import { auth, signOut, onAuthStateChanged, getDoc, db, doc, updateDoc  } from "./firebase.js";
+import { auth, signOut, onAuthStateChanged, getDoc, db, doc, updateDoc, 
+  collection, getDocs, addDoc, onSnapshot, serverTimestamp, query,
+  orderBy } from "./firebase.js";
 
 const logout = () => {
   signOut(auth)
@@ -62,3 +64,43 @@ console.log("profile update")
 }
 let updateBtn = document.getElementById("updateBtn");
 updateBtn && updateBtn.addEventListener("click", updateName);
+
+let getAllUsers = async ()=>{
+  const q = collection(db, "users");
+
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+}
+getAllUsers();
+
+let addTodoTask = async ()=>{
+  let task = document.getElementById("task");
+ // Add a new document with a generated id.
+const docRef = await addDoc(collection(db, "todos"), {
+  task: task.value,
+  time: serverTimestamp(),
+});
+console.log("Document written with ID: ", docRef.id);
+
+}
+let addTodoBtn = document.getElementById("addTodoBtn");
+addTodoBtn && addTodoBtn.addEventListener("click", addTodoTask);
+
+const getAllTodos = async ()=>{
+  const ref = query(collection(db, "todos"), orderBy("time", "desc"));
+  let listGroup = document.querySelector(".list-group");
+  const unsubscribe = onSnapshot(ref, (querySnapshot) => {
+    listGroup.innerHTML= '';
+    const todos = [];
+    querySnapshot.forEach((doc) => {
+         listGroup.innerHTML += `<li class="list-group-item">${doc.data().task}</li>`
+        todos.push(doc.data().task);
+    });
+
+    console.log("todos==>", todos);
+  });
+}
+getAllTodos();

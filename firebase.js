@@ -8,7 +8,8 @@ import {
   GoogleAuthProvider, signInWithPopup, signInWithRedirect, 
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
-import { getFirestore, doc, setDoc, getDoc, updateDoc   } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, 
+  getDocs, addDoc, onSnapshot, serverTimestamp, query, orderBy, } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -44,5 +45,12 @@ export {
     setDoc,
     db,
     getDoc,
-    updateDoc  
+    updateDoc,
+    collection, 
+    getDocs, 
+    addDoc,
+    onSnapshot,
+    serverTimestamp,
+    query,
+    orderBy
 }

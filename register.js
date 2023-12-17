@@ -1,15 +1,23 @@
-import { auth, createUserWithEmailAndPassword } from "./firebase.js";
+import { auth, createUserWithEmailAndPassword, doc, setDoc, db  } from "./firebase.js";
 
 const register = () => {
     const reg_email = document.getElementById("reg_email");
     const reg_password = document.getElementById("reg_password");
   
     createUserWithEmailAndPassword(auth, reg_email.value, reg_password.value)
-      .then((userCredential) => {
+      .then(async(userCredential) => {
         // Signed up
         const user = userCredential.user;
         console.log("user==>", user);
-        location.href = "profile.html"
+         // Add a new document in collection "cities"
+      const res = await setDoc(doc(db, "users", user.uid), {
+        name: user.displayName,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        picture: user.photoURL,
+      });
+      console.log("res-->", res)
+      location.href = "profile.html";
       })
       .catch((error) => {
         const errorCode = error.code;
