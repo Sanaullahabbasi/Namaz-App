@@ -12,36 +12,27 @@ import {
 
 let regWGoogle = document.getElementById("regWGoogle");
 
-let addDataToFirestore = async(user)=>{
- // Add a new document in collection "cities"
- const res = await setDoc(doc(db, "user", user.uid), {
-  name: user.displayName,
-  email: user.email,
-  emailVerified: user.emailVerified,
-  picture: user.photoURL,
-  uid: user.uid
-});
-console.log("res-->", res)
-}
+// let user;
 
 const registerwithGoogle = () => {
   signInWithPopup(auth, provider)
-    .then((result) => {
+    .then(async (result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
       // console.log("google access", credential, token, user);
       console.log("google access", user);
+      // addDataToFirestore(user);
 
-      // // Add a new document in collection "cities"
-      // await setDoc(doc(db, "user", user.uid), {
-      //   name: user.displayName,
-      //   email: user.email,
-      //   emailVerified: user.emailVerified,
-      //   picture: user.photoURL,
-      // });
-      addDataToFirestore(user);
-      // location.href = "profile.html";
+      // Add a new document in collection "cities"
+      const res = await setDoc(doc(db, "users", user.uid), {
+        name: user.displayName,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        picture: user.photoURL,
+      });
+      console.log("res-->", res)
+      location.href = "profile.html";
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -57,3 +48,15 @@ const registerwithGoogle = () => {
 if (regWGoogle) {
   regWGoogle.addEventListener("click", registerwithGoogle);
 }
+
+// let addDataToFirestore = async (user)=>{
+//   // Add a new document in collection "cities"
+//   const res = await setDoc(doc(db, "users", user.uid), {
+//     name: user.displayName,
+//     email: user.email,
+//     emailVerified: user.emailVerified,
+//     picture: user.photoURL,
+//     uid: user.uid
+//  });
+//  console.log("res-->", res)
+//  }

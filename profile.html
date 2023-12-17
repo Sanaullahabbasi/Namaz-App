@@ -19,7 +19,7 @@
     ></script>
   </head>
   <body>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row justify-content-center">
         <div id="loader" class="col-md-6 prof text-center mt-5">
           <div class="spinner-grow text-info text-align" role="status">
@@ -29,11 +29,15 @@
       </div>
       <div id="main" class="row justify-content-center">
         <div class="col-md-6 prof">
-          <div class="name"></div>
+          <!-- <div class="name">
+          </div> -->
+          <input type="text" id="name" class="form-control name" placeholder="name">
+          
+          <button id="updateBtn" class="btn btn-primary mt-5">Update Name</button>
           <div class="email"></div>
           <button id="logutBtn" class="btn btn-primary mt-5">Logout</button>
         </div>
-      </div>
+      </div> 
     </div>
 
     <script src="app.js" type="module"></script>
